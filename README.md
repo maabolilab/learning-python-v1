@@ -1,13 +1,6 @@
-# learning-python-v1
-
-Here is a clean, student-friendly `README.md` file formatted using Markdown. You can copy-paste this directly into your GitHub repository's **README.md** file.
-
-I have written it in simple English so kids can understand, with emojis to make it look less scary.
+#  🚀 learning-python-v1
 
 ***
-
-```markdown
-# 🚀 Python for Kids (Punjabi Course)
 
 **Sat Sri Akal!** Welcome to the official code repository for our Python Course. 
 This is your "Digital Schoolbag." It contains all the tools, examples, and projects we will build together in the videos.
@@ -82,4 +75,4 @@ This folder contains the code shown in the YouTube videos.
 If you get stuck, check the video description or comment on the YouTube channel.
 
 **Happy Coding!!** 🚀
-```
+
