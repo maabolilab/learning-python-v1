@@ -8,9 +8,10 @@ class School_Admin:
 
     def add_student(self, student: Student):
         self.students[student.roll_no] = student
+        print(self.students)
 
     def add_teacher(self, teacher: Teacher):
-        self.students[teacher.employee_id] = teacher
+        self.teachers[teacher.employee_id] = teacher
 
     def delete_teacher(self, employee_id):
         return self.teachers.pop(employee_id, None)

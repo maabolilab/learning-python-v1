@@ -1,6 +1,11 @@
 from student import Student
 from teacher import Teacher
-from school_admin import School_Admin
+from school_admin_db import School_Admin
+import os
+from db_connection import SchoolDB
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def display_menu():
     print("-"*60)
@@ -10,7 +15,7 @@ def display_menu():
     print("Press 4 to delete Teacher")
     print("Press 5 to get all list of Students")
     print("Press 6 to get all list of teachers")
-    print("Press any other key to quit.")
+    print("Press 'q or quit or exit' to stop the application")
     print("-"*60)
 
 def get_user_details():
@@ -28,9 +33,11 @@ def get_user_details():
         "subjects": subjects
     }
 
-admin = School_Admin()
+school_admin_db = SchoolDB("school_admin_db")
+admin = School_Admin(school_admin_db)
 
 while True:
+    clear_screen()
     display_menu()
     value = input("Enter your value: ")
     match value:
@@ -44,7 +51,7 @@ while True:
                 user_details['phone_number'], user_details['subjects'], roll_no, class_
             )
             admin.add_student(student)
-            5
+            print(student)
         case "2":
             print("Enter Teacher Details: ")
             user_details = get_user_details()
@@ -56,13 +63,25 @@ while True:
             )
             admin.add_teacher(teacher)
 
-        case "5":
-            for stundent in admin.get_all_students():
-                print(student)
+        case "3":
+            roll_no = input("For delete the student enter roll no: ")
+            admin.delete_student(roll_no)
 
+        case "4":
+            employee_id = input("For delete the teacher enter employee no: ")
+            admin.delete_teacher(employee_id)
+            
+        case "5":
+            for student in admin.get_all_students():
+                print(student)
+            input("Press Enter to continue....")
         case "6":
             for teacher in admin.get_all_teachers():
                 print(teacher)
-        case _:
+            input("Press Enter to continue....")
+
+        case "q" | "quit" | "exit":
             print("Exit")
             break
+        case _:
+            print("Unrecognized options. Please try again...")
